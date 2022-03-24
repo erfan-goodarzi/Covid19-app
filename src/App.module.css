@@ -1,0 +1,9 @@
+body {
+  background-color: #393E46;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

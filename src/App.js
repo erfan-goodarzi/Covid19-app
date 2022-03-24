@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Cards, Chart, Countrypk } from './components';
+import styles from './App.module.css';
+import { fetchData } from './api';
+import { useEffect, useState } from 'react';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 function App() {
+  const [Data, SetData] = useState();
+  useEffect(() => {
+    const data = fetchData();
+    data.then((res) => {
+      SetData(res);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Title style={{textAlign: 'center' , marginTop: '2rem'}}>سرشماری کرونا</Title>
+      <div className={styles.container}>
+        <Cards data={Data} />
+        <Countrypk />
+        <Chart />
+      </div>
+    </>
   );
 }
 
