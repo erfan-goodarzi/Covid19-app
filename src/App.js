@@ -16,7 +16,10 @@ function App() {
   }, []);
   return (
     <>
-      <Title style={{textAlign: 'center' , marginTop: '2rem'}}>سرشماری کرونا</Title>
+      <Title
+        style={{ textAlign: 'center', marginTop: '2rem', color: '#FFD369' }}>
+        آمار کرونا
+      </Title>
       <div className={styles.container}>
         <Cards data={Data} />
         <Countrypk />
