@@ -1,14 +1,10 @@
 import Box from '../Box';
 import { Row, Spin } from 'antd';
-import moment from 'moment-jalaali';
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   if (!confirmed) {
     return <Spin size='large' />;
   }
-  const d = new Date(2022,2,21)
 
-  console.log();
-  console.log(new Intl.DateTimeFormat('fa-IR').format(d));
   return (
     <div>
       <Row gutter={48}>

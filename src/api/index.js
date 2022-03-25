@@ -10,10 +10,20 @@ export const fetchData = async () => {
       confirmed,
       recovered,
       deaths,
-      lastUpdate 
+      lastUpdate,
     };
     return modifiData;
   } catch (err) {
-      console.log(err)
+    console.log(err);
+  }
+};
+
+export const fetchDailyData = async () => {
+  try {
+    const { data } = await axios.get('https://api.covidtracking.com/v1/us/daily.json');
+  
+      return data.map(({ positive, recovered, death, dateChecked: date }) => ({ confirmed: positive, recovered, deaths: death, date }));
+  } catch (err) {
+    console.log(err);
   }
 };

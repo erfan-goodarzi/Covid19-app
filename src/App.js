@@ -1,4 +1,4 @@
-import { Cards, Chart, Countrypk } from './components';
+import { Cards, Charts, Countrypk } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
 import { useEffect, useState } from 'react';
@@ -9,12 +9,11 @@ const { Title } = Typography;
 function App() {
   const [covidData, SetCovidData] = useState({});
   useEffect(() => {
-    const dataItem = async () => {
+    const fetchApi = async () => {
       const data = await fetchData();
       SetCovidData(data);
     };
-    dataItem();
-    console.log(covidData);
+    fetchApi();
   }, []);
   return (
     <>
@@ -25,7 +24,7 @@ function App() {
       <div className={styles.container}>
         <Cards data={covidData} />
         <Countrypk />
-        <Chart />
+        <Charts />
       </div>
     </>
   );
