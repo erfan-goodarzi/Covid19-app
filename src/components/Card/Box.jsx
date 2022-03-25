@@ -18,9 +18,20 @@ const Box = ({ title, color, covidNumber, date }) => {
                 fontSize: '25px',
                 fontWeight: '600',
               }}>
-              <CountUp start={0} end={covidNumber}  duration={2.75} separator="," />
+              <CountUp
+                start={0}
+                end={covidNumber}
+                duration={2.75}
+                separator=','
+              />
             </p>
-            <p style={{ color: '#eee' }}>تاریخ : {new Date(date).toDateString()}</p>
+            <p style={{ color: '#eee' }}>
+              تاریخ :{' '}
+              {new Intl.DateTimeFormat('fa-IR', {
+                dateStyle: 'medium',
+              }).format(new Date(date))}
+            </p>
+
             <p style={{ color: '#eee' }}>
               تعداد افراد {title} بر اثر این بیماری.
             </p>
