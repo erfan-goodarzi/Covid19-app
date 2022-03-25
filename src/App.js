@@ -7,12 +7,14 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 function App() {
-  const [Data, SetData] = useState();
+  const [covidData, SetCovidData] = useState({});
   useEffect(() => {
-    const data = fetchData();
-    data.then((res) => {
-      SetData(res);
-    });
+    const dataItem = async () => {
+      const data = await fetchData();
+      SetCovidData(data);
+    };
+    dataItem();
+    console.log(covidData);
   }, []);
   return (
     <>
@@ -21,7 +23,7 @@ function App() {
         آمار کرونا
       </Title>
       <div className={styles.container}>
-        <Cards data={Data} />
+        <Cards data={covidData} />
         <Countrypk />
         <Chart />
       </div>

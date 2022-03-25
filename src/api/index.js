@@ -10,8 +10,10 @@ export const fetchData = async () => {
       confirmed,
       recovered,
       deaths,
-      lastUpdate,
+      lastUpdate 
     };
     return modifiData;
-  } catch (err) {}
+  } catch (err) {
+      console.log(err)
+  }
 };
