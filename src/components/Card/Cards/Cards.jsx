@@ -1,7 +1,7 @@
 import Box from '../Box';
 import { Row, Spin } from 'antd';
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
-  return !confirmed ? (
+  return confirmed ? (
     <div>
       <Row gutter={48}>
         <Box
