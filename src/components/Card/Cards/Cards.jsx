@@ -1,11 +1,7 @@
 import Box from '../Box';
 import { Row, Spin } from 'antd';
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
-  if (!confirmed) {
-    return <Spin size='large' />;
-  }
-
-  return (
+  return !confirmed ? (
     <div>
       <Row gutter={48}>
         <Box
@@ -28,6 +24,8 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         />
       </Row>
     </div>
+  ) : (
+    <Spin size='large' />
   );
 };
 
