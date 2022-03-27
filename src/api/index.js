@@ -41,7 +41,17 @@ export const fetchCountry = async () => {
       data: { countries },
     } = await axios.get(`${url}/countries`);
 
-    return countries.map((country) => country.name);
+    return countries.map((country) => country);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchCountryDetails = async (country) => {
+  try {
+    const countryDetails = await axios.get(`${url}/countries/${country}`);
+    console.log(countryDetails)
+    return countryDetails.data;
   } catch (err) {
     console.log(err);
   }

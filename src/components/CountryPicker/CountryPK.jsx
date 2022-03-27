@@ -1,11 +1,12 @@
 import { Select } from 'antd';
 import { useEffect, useState } from 'react';
-import { fetchCountry } from '../../api';
+import { fetchCountry, fetchCountryDetails } from '../../api';
 
 const { Option } = Select;
 
 function onChange(value) {
   console.log(`selected ${value}`);
+  fetchCountryDetails(value);
 }
 
 function onSearch(val) {
@@ -20,7 +21,6 @@ const Countrypk = () => {
     };
     fetchApi();
   }, []);
-
   return (
     <div>
       {' '}
@@ -35,7 +35,7 @@ const Countrypk = () => {
         showSearch
         placeholder='یک کشور را انتخاب کنید'
         optionFilterProp='children'
-        defaultValue="جهانی"
+        defaultValue='جهانی'
         bordered={false}
         onChange={onChange}
         onSearch={onSearch}
@@ -43,7 +43,9 @@ const Countrypk = () => {
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
         }>
         {Countries.map((item) => (
-          <Option value={item}>{item}</Option>
+          <Option key={item.name} value={item.iso2}>
+            {item.name}
+          </Option>
         ))}
       </Select>{' '}
     </div>
