@@ -1,18 +1,13 @@
 import { Select } from 'antd';
 import { useEffect, useState } from 'react';
-import { fetchCountry, fetchCountryDetails } from '../../api';
+import { fetchCountry } from '../../api';
 
 const { Option } = Select;
-
-function onChange(value) {
-  console.log(`selected ${value}`);
-  fetchCountryDetails(value);
-}
 
 function onSearch(val) {
   console.log('search:', val);
 }
-const Countrypk = () => {
+const Countrypk = ({ onChanged }) => {
   const [Countries, setContries] = useState([]);
   useEffect(() => {
     const fetchApi = async () => {
@@ -37,7 +32,7 @@ const Countrypk = () => {
         optionFilterProp='children'
         defaultValue='جهانی'
         bordered={false}
-        onChange={onChange}
+        onChange={onChanged}
         onSearch={onSearch}
         filterOption={(input, option) =>
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
