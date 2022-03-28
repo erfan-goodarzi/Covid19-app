@@ -50,7 +50,6 @@ export const fetchCountry = async () => {
 export const fetchCountryDetails = async (country) => {
   try {
     const countryDetails = await axios.get(`${url}/countries/${country}`);
-    console.log(countryDetails)
     return countryDetails.data;
   } catch (err) {
     console.log(err);

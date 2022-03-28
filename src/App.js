@@ -15,7 +15,6 @@ function App() {
     SetCountryDetails(countryDetails);
     SetIsChanged(true);
   };
-  console.log(CountryDetails);
   useEffect(() => {
     const fetchApi = async () => {
       const data = await fetchData();
@@ -32,7 +31,7 @@ function App() {
       <div className={styles.container}>
         <Cards data={isChanged ? CountryDetails : covidData} />
         <Countrypk onChanged={changeCountry} />
-        <Charts />
+        <Charts country={CountryDetails} changedCountry={isChanged} />
       </div>
     </>
   );

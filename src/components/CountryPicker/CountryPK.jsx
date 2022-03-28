@@ -4,9 +4,6 @@ import { fetchCountry } from '../../api';
 
 const { Option } = Select;
 
-function onSearch(val) {
-  console.log('search:', val);
-}
 const Countrypk = ({ onChanged }) => {
   const [Countries, setContries] = useState([]);
   useEffect(() => {
@@ -33,7 +30,6 @@ const Countrypk = ({ onChanged }) => {
         defaultValue='جهانی'
         bordered={false}
         onChange={onChanged}
-        onSearch={onSearch}
         filterOption={(input, option) =>
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
         }>

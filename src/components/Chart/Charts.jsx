@@ -4,7 +4,7 @@ import { Line, Bar } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 import styles from './Chart.module.css';
 Chart.register(...registerables);
-const Charts = () => {
+const Charts = ({ country, changedCountry }) => {
   const [DailyData, setDailyData] = useState([]);
   useEffect(() => {
     const fetchApi = async () => {
@@ -28,7 +28,7 @@ const Charts = () => {
     },
   };
 
-  const data = {
+  const lineData = {
     labels: DailyData.map(({ date }) => new Date(date).toLocaleDateString()),
     datasets: [
       {
@@ -53,9 +53,23 @@ const Charts = () => {
       },
     ],
   };
+  const barData = {
+    labels: ['مبتلا شده', 'بهبود یافته', 'فوت شده'],
+    datasets: [
+      {
+        label: 'افراد مبتلا شده',
+        data: changedCountry
+          ? [country.confirmed.value, country.deaths.value]
+          : null,
+        backgroundColor: ['rgb(0, 123, 255)', 'rgb(255, 0, 13)'],
+        borderWidth: 0,
+      },
+    ],
+  };
+  const line = DailyData[0] ? <Line data={lineData} options={options} /> : null;
+  const bar = <Bar data={barData} options={options} />;
 
-  const line = DailyData[0] ? <Line data={data} options={options} /> : null;
-  return <div className={styles.chart}>{line}</div>;
+  return <div className={styles.chart}>{changedCountry ? bar : line}</div>;
 };
 
 export default Charts;
