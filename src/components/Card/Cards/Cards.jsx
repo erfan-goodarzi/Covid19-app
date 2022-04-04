@@ -1,9 +1,10 @@
 import Box from '../Box';
 import { Row, Spin } from 'antd';
+import styles from '../Card.module.css'
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   return confirmed ? (
     <div>
-      <Row gutter={48}>
+      <Row className={styles.row} gutter={48}>
         <Box
           title='مبتلا شده'
           color='#007bff'

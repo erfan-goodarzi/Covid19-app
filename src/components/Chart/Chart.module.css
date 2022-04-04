@@ -2,3 +2,9 @@
   width: 79%;
   margin-top: 5rem;
 }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .chart {
+    width: 100%;
+  }
+}

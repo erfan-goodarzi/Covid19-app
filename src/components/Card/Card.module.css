@@ -5,3 +5,9 @@
   -webkit-box-shadow: 5px 5px 14px #24272c, -5px -5px 14px #4e5560;
   box-shadow: -6px -3px 14px #24272c, 2px 1px 14px #4b5464;
 }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .row {
+    display: block !important;
+  }
+}
