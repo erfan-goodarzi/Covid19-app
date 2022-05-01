@@ -5,7 +5,7 @@ import { Chart, registerables } from 'chart.js';
 import styles from './Chart.module.css';
 Chart.register(...registerables);
 const Charts = ({ country, changedCountry }) => {
-  const [DailyData, setDailyData] = useState([]);
+  const [dailyData, setDailyData] = useState([]);
   useEffect(() => {
     const fetchApi = async () => {
       const data = await fetchDailyData();
@@ -29,23 +29,23 @@ const Charts = ({ country, changedCountry }) => {
   };
 
   const lineData = {
-    labels: DailyData.map(({ date }) => new Date(date).toLocaleDateString()),
+    labels: dailyData.map(({ date }) => new Date(date).toLocaleDateString()),
     datasets: [
       {
-        data: DailyData.map((data) => data.confirmed),
+        data: dailyData.map((data) => data.confirmed),
         label: 'مبتلا شده',
         borderColor: '#3333ff',
         fill: true,
       },
       {
-        data: DailyData.map((data) => data.deaths),
+        data: dailyData.map((data) => data.deaths),
         label: 'فوت شده',
         borderColor: 'red',
         backgroundColor: 'rgba(255, 0, 0, 0.5)',
         fill: true,
       },
       {
-        data: DailyData.map((data) => data.recovered),
+        data: dailyData.map((data) => data.recovered),
         label: 'بهبود یافته',
         borderColor: 'green',
         backgroundColor: 'rgba(0, 255, 0, 0.5)',
@@ -66,7 +66,7 @@ const Charts = ({ country, changedCountry }) => {
       },
     ],
   };
-  const line = DailyData[0] ? <Line data={lineData} options={options} /> : null;
+  const line = dailyData[0] ? <Line data={lineData} options={options} /> : null;
   const bar = <Bar data={barData} options={options} />;
 
   return <div className={styles.chart}>{changedCountry ? bar : line}</div>;

@@ -1,6 +1,6 @@
 import Box from '../Box';
 import { Row, Spin } from 'antd';
-import styles from '../Card.module.css'
+import styles from '../Card.module.css';
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   return confirmed ? (
     <div>

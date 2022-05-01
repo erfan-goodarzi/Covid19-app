@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 function App() {
   const [covidData, SetCovidData] = useState({});
-  const [CountryDetails, SetCountryDetails] = useState({});
+  const [countryDetails, SetCountryDetails] = useState({});
   const [isChanged, SetIsChanged] = useState(false);
   const changeCountry = async (value) => {
     const countryDetails = await fetchCountryDetails(value);
@@ -29,9 +29,9 @@ function App() {
         آمار کرونا
       </Title>
       <div className={styles.container}>
-        <Cards data={isChanged ? CountryDetails : covidData} />
+        <Cards data={isChanged ? countryDetails : covidData} />
         <Countrypk onChanged={changeCountry} />
-        <Charts country={CountryDetails} changedCountry={isChanged} />
+        <Charts country={countryDetails} changedCountry={isChanged} />
       </div>
     </>
   );

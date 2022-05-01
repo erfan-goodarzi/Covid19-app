@@ -5,7 +5,7 @@ import { fetchCountry } from '../../api';
 const { Option } = Select;
 
 const Countrypk = ({ onChanged }) => {
-  const [Countries, setContries] = useState([]);
+  const [countries, setContries] = useState([]);
   useEffect(() => {
     const fetchApi = async () => {
       const data = await fetchCountry();
@@ -33,7 +33,7 @@ const Countrypk = ({ onChanged }) => {
         filterOption={(input, option) =>
           option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
         }>
-        {Countries.map((item) => (
+        {countries.map((item) => (
           <Option key={item.name} value={item.iso2}>
             {item.name}
           </Option>
